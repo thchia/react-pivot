@@ -10,9 +10,9 @@ var Emitter = require('wildemitter')
 var partial = require('./lib/partial')
 var download = require('./lib/download')
 var getValue = require('./lib/get-value')
-var PivotTable = require('./lib/pivot-table.jsx')
-var Dimensions = require('./lib/dimensions.jsx')
-var ColumnControl = require('./lib/column-control.jsx')
+var PivotTable = require('./lib/pivot-table')
+var Dimensions = require('./lib/dimensions')
+var ColumnControl = require('./lib/column-control')
 
 module.exports = React.createClass({
   displayName: 'ReactPivot',
