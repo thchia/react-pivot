@@ -1,3 +1,4 @@
+module.exports =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -860,7 +861,7 @@ module.exports = ReactElement;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -1469,7 +1470,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -1505,7 +1506,7 @@ module.exports = ReactCurrentOwner;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -1526,17 +1527,19 @@ module.exports = canDefineProperty;
 
 /***/ }),
 /* 28 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-var slice = Array.prototype.slice
+"use strict";
+
+
+var slice = Array.prototype.slice;
 
 module.exports = function (fn) {
-  var partialArgs = slice.call(arguments, 1)
-  return function() {
-    return fn.apply(this, partialArgs.concat(slice.call(arguments)))
-  }
-}
-
+  var partialArgs = slice.call(arguments, 1);
+  return function () {
+    return fn.apply(this, partialArgs.concat(slice.call(arguments)));
+  };
+};
 
 /***/ }),
 /* 29 */
@@ -1553,7 +1556,7 @@ module.exports = function (fn) {
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 function makeEmptyFunction(arg) {
@@ -2041,7 +2044,7 @@ module.exports = ReactComponent;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -2472,19 +2475,21 @@ module.exports = ReactNoopUpdateQueue;
 
 /***/ }),
 /* 44 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = function getValue (dimension, row) {
-  if (dimension == null) return null
-  var val
+"use strict";
+
+
+module.exports = function getValue(dimension, row) {
+  if (dimension == null) return null;
+  var val;
   if (typeof dimension.value === 'string') {
-    val = row[dimension.value]
+    val = row[dimension.value];
   } else {
-    val = dimension.value(row)
+    val = dimension.value(row);
   }
-  return val
-}
-
+  return val;
+};
 
 /***/ }),
 /* 45 */
@@ -3334,7 +3339,7 @@ module.exports = ReactPropTypesSecret;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -3618,7 +3623,7 @@ module.exports = ReactElementValidator;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -3649,7 +3654,7 @@ module.exports = ReactPropTypeLocationNames;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -3712,27 +3717,6 @@ module.exports = function(module) {
 
 /***/ }),
 /* 75 */
-/***/ (function(module, exports) {
-
-module.exports = function(content, filename, mime) {
-  if (mime == null) mime = 'text/csv'
-
-  var blob = new Blob([content], { type: mime })
-
-  var a = document.createElement('a')
-  a.download = filename
-  a.href = window.URL.createObjectURL(blob)
-  a.dataset.downloadurl = [mime, a.download, a.href].join(':')
-
-  var e = document.createEvent('MouseEvents')
-  e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false,
-    false, false, 0, null)
-  return a.dispatchEvent(e)
-}
-
-
-/***/ }),
-/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3782,7 +3766,7 @@ module.exports = React.createClass({
 });
 
 /***/ }),
-/* 77 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3864,6 +3848,28 @@ module.exports = React.createClass({
     this.props.onChange(updatedDimensions);
   }
 });
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (content, filename, mime) {
+  if (mime == null) mime = 'text/csv';
+
+  var blob = new Blob([content], { type: mime });
+
+  var a = document.createElement('a');
+  a.download = filename;
+  a.href = window.URL.createObjectURL(blob);
+  a.dataset.downloadurl = [mime, a.download, a.href].join(':');
+
+  var e = document.createEvent('MouseEvents');
+  e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+  return a.dispatchEvent(e);
+};
 
 /***/ }),
 /* 78 */
@@ -4591,11 +4597,11 @@ var DataFrame = __webpack_require__(79);
 var Emitter = __webpack_require__(83);
 
 var partial = __webpack_require__(28);
-var download = __webpack_require__(75);
+var download = __webpack_require__(77);
 var getValue = __webpack_require__(44);
 var PivotTable = __webpack_require__(78);
-var Dimensions = __webpack_require__(77);
-var ColumnControl = __webpack_require__(76);
+var Dimensions = __webpack_require__(76);
+var ColumnControl = __webpack_require__(75);
 
 module.exports = React.createClass({
   displayName: 'ReactPivot',
@@ -9528,7 +9534,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -9592,7 +9598,7 @@ module.exports = KeyEscapeUtils;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -10945,7 +10951,7 @@ module.exports = factory(isValidElement);
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 

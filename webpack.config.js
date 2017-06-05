@@ -4,7 +4,9 @@ module.exports = {
   entry: './index.jsx',
   output: {
     filename: 'index.js',
-    path: path.resolve('dist')
+    path: path.resolve('dist'),
+    library: 'ReactPivot',
+    libraryTarget: 'commonjs-module'
   },
   resolve: {
     extensions: [".webpack.js", ".web.js", ".js", ".jsx"]
@@ -16,7 +18,7 @@ module.exports = {
         use: ['style-loader', 'css-loader']
       },
       {
-        test: /\.jsx$/,
+        test: /\.(js|jsx)$/,
         exclude: /(node_modules)/,
         loader: 'babel-loader',
         query: {
